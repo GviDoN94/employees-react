@@ -13,11 +13,12 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {name: 'Jhon C.', salary: 800, increase: false, rise: false, id: 1},
-                {name: 'Alex M.', salary: 3000, increase: false, rise: false, id: 2},
+                {name: 'Jhon C.', salary: 800, increase: false, rise: true, id: 1},
+                {name: 'Alex M.', salary: 3000, increase: true, rise: false, id: 2},
                 {name: 'Carl W.', salary: 5000, increase: false, rise: false, id: 3}
             ],
-            term: ''
+            term: '',
+            filter: 'all'
         }
     }
 
@@ -58,6 +59,22 @@ class App extends Component {
         }))
     }
 
+    filterEmployees = (items, prop) => {
+        switch (prop) {
+            case 'rise':
+                return items.filter(item => item.rise);
+            case 'moreThen1000':
+                return items.filter(item => item.salary > 1000)
+            default:
+                return items;
+
+        }
+    }
+
+    onFilterSelect = (filter) => {
+        this.setState({filter});
+    }
+
     searchEmployees = (items, term) => {
         if (term.length === 0) {
             return items;
@@ -71,17 +88,17 @@ class App extends Component {
     }
 
     render() {
-        const {data, term} = this.state
+        const {data, filter, term} = this.state
         const employees = data.length;
         const increaced = data.filter(item => item.increase).length;
-        const visibleData = this.searchEmployees(data, term);
+        const visibleData = this.filterEmployees(this.searchEmployees(data, term), filter);
         return (
             <div className="app">
                 <AppInfo employees={employees} increaced={increaced}/>
     
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-                    <AppFilter/>
+                    <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
                 </div>
     
                 <EmployeesList
