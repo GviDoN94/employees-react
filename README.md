@@ -1,16 +1,18 @@
-# Посмотреть можно [здесь](https://employees.vladislavsurin.ru/)
+# You can watch it [here](https://employees.vladislavsurin.ru/)
 
-## Как пользоваться
+## Install the necessary programs
 
-### Установка необходимых программ
+- <https://nodejs.org/en/> - install node.js v16.15.1
 
-1. <https://nodejs.org/en/> - поставить node v16.15.1
+## Install dependencies
 
-### Установка зависимостей проекта
+- From the project root folder in a terminal run `npm i`
 
-* из корневой папки проекта в терминале запустить `npm i`
+## Project build
 
-### Работа в проектом
+- `npm start` - run the development server
+- `npm run build` - production build
 
-* `npm start` - для запуска сервера разработки
-* `npm run build` - для сборки в продакшен
+Source files `src/`
+
+Build files `build/`
