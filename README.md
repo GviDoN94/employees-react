@@ -1,4 +1,4 @@
-# You can watch it [here](https://employees.gvidon94.ru/)
+# You can look at it [here](https://employees.gvidon94.ru/)
 
 ## Install the necessary programs
 
